@@ -1,0 +1,6 @@
+*~
+*.pyc
+*.pyo
+__pycache__/
+.directory
+*.sqlite3
