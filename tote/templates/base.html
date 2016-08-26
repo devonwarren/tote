@@ -26,6 +26,21 @@
     <body class="{% block body_class %}{% endblock %}">
         {% wagtailuserbar %}
 
+        <header>
+
+          <div class="social-icons">
+          </div>
+
+          <div class="logo">
+            <img src="{% static 'images/logo.svg' %}" title="Tote">
+          </div>
+
+          <div class="slogan">
+            <img src="{% static 'images/slogan.svg' %}" title="Redefine the Conversation">
+          </div>
+
+        </header>
+
         {% block content %}{% endblock %}
 
         {# Global javascript #}
