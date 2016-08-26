@@ -4,10 +4,10 @@ django-appconf==1.0.2
 django-compressor==2.1
 django-libsass==0.7
 django-modelcluster==2.0
-django-taggit==0.21.0
+django-taggit==0.21.1
 django-treebeard==4.0.1
 djangorestframework==3.4.6
-html5lib==0.999999999
+html5lib==0.999999
 libsass==0.11.1
 lxml==3.6.4
 Pillow==3.3.1
@@ -16,6 +16,6 @@ rcssmin==1.0.6
 rjsmin==1.0.12
 six==1.10.0
 Unidecode==0.4.19
-wagtail==1.6
+wagtail==1.6.1
 webencodings==0.5
 Willow==0.3.1
