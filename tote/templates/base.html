@@ -28,9 +28,6 @@
 
         <header>
 
-          <div class="social-icons">
-          </div>
-
           <div class="logo">
             <img src="{% static 'images/logo.svg' %}" title="Tote">
           </div>
@@ -39,9 +36,19 @@
             <img src="{% static 'images/slogan.svg' %}" title="Redefine the Conversation">
           </div>
 
-        </header>
+          <div class="placeholder">
+            // COMING SOON //
+          </div>
 
-        {% block content %}{% endblock %}
+          <div class="social-icons">
+            <a href="https://www.facebook.com/totemagazine/"><img src="{% static "images/social/facebook.svg" %}" title="Facebook"></a>
+            <a href="https://www.instagram.com/tote_mag/"><img src="{% static "images/social/instagram.svg" %}" title="Instagram"></a>
+            <a href="https://twitter.com/tote_mag"><img src="{% static "images/social/twitter.svg" %}" title="Twitter"></a>
+            <a href="http://tote-mag.tumblr.com/"><img src="{% static "images/social/tumblr.svg" %}" title="Tumblr"></a>
+            <a href="https://www.snapchat.com/add/tote_mag"><img src="{% static "images/social/snapchat.svg" %}" title="Snapchat"></a>
+          </div>
+
+        </header>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/tote.js' %}"></script>

@@ -1,7 +1,7 @@
 body {
   font-family: 'Arial', sans-serif;
   font-size: 1rem;
-  background-color: #FFF;
+  background-color: #CDEBED;
 }
 
 img {
@@ -11,10 +11,28 @@ img {
 header {
   text-align: center;
 
-  div.logo img {
-    width: 10rem;
+  div.social-icons {
+    margin: 2rem;
+
+    img {
+      width: 1.8rem;
+      height: 1.8rem;
+    }
   }
-  div.slogan img {
-    width: 20rem;
+
+  div.logo {
+    margin: 2rem;
+
+    img {
+      width: 10rem;
+    }
+  }
+
+  div.slogan {
+    margin: 2rem;
+
+    img {
+      width: 20rem;
+    }
   }
 }
