@@ -6,16 +6,17 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
     <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
-        <meta name="description" content="" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="icon" href="{% static "images/favicon.ico" %}">
+        <link rel="icon" sizes="192x192" href="{% static "images/favicon.png" %}">
 
         {# Global stylesheets #}
         {% load compress %}
         {% compress css %}
-          <link rel="stylesheet" type="text/x-scss" href="{% static "css/main.scss" %}" />
+          <link rel="stylesheet" type="text/x-scss" href="{% static "css/main.scss" %}">
         {% endcompress %}
 
         {% block extra_css %}
@@ -28,18 +29,6 @@
 
         <header>
 
-          <div class="logo">
-            <img src="{% static 'images/logo.svg' %}" title="Tote">
-          </div>
-
-          <div class="slogan">
-            <img src="{% static 'images/slogan.svg' %}" title="Redefine the Conversation">
-          </div>
-
-          <div class="placeholder">
-            // COMING SOON //
-          </div>
-
           <div class="social-icons">
             <a href="https://www.facebook.com/totemagazine/"><img src="{% static "images/social/facebook.svg" %}" title="Facebook"></a>
             <a href="https://www.instagram.com/tote_mag/"><img src="{% static "images/social/instagram.svg" %}" title="Instagram"></a>
@@ -48,7 +37,28 @@
             <a href="https://www.snapchat.com/add/tote_mag"><img src="{% static "images/social/snapchat.svg" %}" title="Snapchat"></a>
           </div>
 
+          <div class="logo">
+            <img src="{% static 'images/logo.svg' %}" title="Tote">
+          </div>
+
+          <div class="slogan">
+            <img src="{% static 'images/slogan.svg' %}" title="Redefine the Conversation">
+          </div>
+
         </header>
+
+        <nav>
+          <ul>
+            <li><a href="/month/now/">This Month</a></li>
+            <li><a href="/month/all/">All Months</a></li>
+            <li><a href="/about/">About</a></li>
+          </ul>
+        </nav>
+
+        <main>
+          <h2>Testing 123</h2>
+          {% block content %}{% endblock %}
+        </main>
 
         {# Global javascript #}
         <script type="text/javascript" src="{% static 'js/tote.js' %}"></script>

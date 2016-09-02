@@ -1,18 +1,30 @@
+@import "css/reset.scss";
+
+$accent-color-1: #FFD7CB;
+$accent-color-2: #CDEBED;
+
+
+// Basic Elements
+
 body {
   font-family: 'Arial', sans-serif;
   font-size: 1rem;
-  background-color: #CDEBED;
+  background-color: #FFF;
 }
 
 img {
   max-width: 100%;
 }
 
+
+
+// Layout
+
 header {
   text-align: center;
 
   div.social-icons {
-    margin: 2rem;
+    margin: 1rem;
 
     img {
       width: 1.8rem;
@@ -21,7 +33,7 @@ header {
   }
 
   div.logo {
-    margin: 2rem;
+    margin: 1rem;
 
     img {
       width: 10rem;
@@ -29,7 +41,7 @@ header {
   }
 
   div.slogan {
-    margin: 2rem;
+    margin: 1rem;
 
     img {
       width: 20rem;

@@ -150,6 +150,7 @@ WAGTAIL_SITE_NAME = "tote"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'https://www.totemag.com'
 
+ALLOWED_HOSTS = ['totemag.com', 'www.totemag.com']
 
 # Other settings
 
