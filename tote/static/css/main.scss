@@ -1,5 +1,7 @@
 @import "css/reset.scss";
 
+$font-color: #2B2B2B;
+$title-color: #242424;
 $accent-color-1: #FFD7CB;
 $accent-color-2: #CDEBED;
 
@@ -7,13 +9,39 @@ $accent-color-2: #CDEBED;
 // Basic Elements
 
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: 'Times New Roman', serif;
   font-size: 1rem;
   background-color: #FFF;
+  color: $font-color;
 }
 
 img {
   max-width: 100%;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Arial', sans-serif;
+  color: $title-color;
+  margin: 1rem 0;
+  padding: 0;
+  font-size: 1.2rem;
+}
+
+h1 {
+  font-size: 2.8rem;
+}
+
+h2 {
+  font-size: 2.2rem
+}
+
+h3 {
+  font-size: 1.6rem;
+}
+
+a:link, a:visited, a:hover, a:active {
+  color: #0070FF;
+  text-decoration: underline;
 }
 
 
@@ -45,6 +73,29 @@ header {
 
     img {
       width: 20rem;
+    }
+  }
+}
+
+nav {
+  width: 100%;
+  text-align: center;
+  border-top: solid 1px $font-color;
+  border-bottom: solid 1px $font-color;
+  padding: 1rem 0;
+  margin: 2rem 0;
+
+  ul {
+    list-style: none;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    a {
+      padding: 1rem;
+      color: $font-color;
     }
   }
 }

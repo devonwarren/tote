@@ -13,7 +13,7 @@ class Article(Page):
     # Model fields
     body = RichTextField()
     date = models.DateField("Post date")
-    feed_image = models.ForeignKey(
+    main_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
         blank=True,
@@ -30,21 +30,6 @@ class Article(Page):
     # Panel configuration
     content_panels = Page.content_panels + [
         FieldPanel('date'),
+        ImageChooserPanel('main_image'),
         FieldPanel('body', classname="full"),
-        InlinePanel('related_links', label="Related links"),
-    ]
-    promote_panels = [
-        MultiFieldPanel(Page.promote_panels, "Common page configuration"),
-        ImageChooserPanel('feed_image'),
-    ]
-
-
-class ArticleRelatedLink(Orderable):
-    page = ParentalKey(Article, related_name='related_links')
-    name = models.CharField(max_length=255)
-    url = models.URLField()
-
-    panels = [
-        FieldPanel('name'),
-        FieldPanel('url'),
     ]

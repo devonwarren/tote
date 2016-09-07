@@ -5,3 +5,4 @@ __pycache__/
 .directory
 *.sqlite3
 CACHE/
+media/
