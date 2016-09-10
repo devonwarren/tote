@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField
@@ -20,7 +21,20 @@ class Article(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
-
+    text_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='text_by'
+    )
+    art_by = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='art_by'
+    )
     # Search indexing
     search_fields = Page.search_fields + [
         index.SearchField('body'),
@@ -28,8 +42,12 @@ class Article(Page):
     ]
 
     # Panel configuration
+
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         ImageChooserPanel('main_image'),
+        FieldPanel('text_by'),
+        FieldPanel('art_by'),
         FieldPanel('body', classname="full"),
+
     ]
