@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     # Custom
     'articles',
     'home',
+    'months',
     'search',
 
     # Contrib

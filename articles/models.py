@@ -6,6 +6,7 @@ from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+from months.models import Months
 
 
 class Article(Page):
@@ -14,6 +15,13 @@ class Article(Page):
     # Model fields
     body = RichTextField()
     date = models.DateField("Post date")
+    theme = models.ForeignKey(
+        Months,
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='article_theme'
+    )
     main_image = models.ForeignKey(
         'wagtailimages.Image',
         null=True,
@@ -42,12 +50,17 @@ class Article(Page):
     ]
 
     # Panel configuration
-
     content_panels = Page.content_panels + [
         FieldPanel('date'),
+        FieldPanel('theme'),
         ImageChooserPanel('main_image'),
-        FieldPanel('text_by'),
-        FieldPanel('art_by'),
+        MultiFieldPanel(
+            [
+                FieldPanel('text_by'),
+                FieldPanel('art_by'),
+            ],
+            heading="Attribution",
+            classname="collapsible collapsed",
+        ),
         FieldPanel('body', classname="full"),
-
     ]
