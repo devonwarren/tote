@@ -1,0 +1,11 @@
+{% overextends "wagtailadmin/base.html" %}
+
+{% load staticfiles %}
+
+{% block branding_logo %}
+    <img src="{% static "images/logo.svg" %}" alt="Tote Mag Admin" width="100" height="100" />
+{% endblock %}
+
+{% block branding_favicon %}
+    <link rel="icon" href="{% static "images/favicon.ico" %}">
+{% endblock %}

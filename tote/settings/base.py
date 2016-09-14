@@ -28,12 +28,14 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 INSTALLED_APPS = [
     # Custom
     'articles',
+    'dashboard',
     'home',
     'months',
     'search',
 
     # Contrib
     'compressor',
+    'overextends',
 
     # Wagtail
     'wagtail.wagtailforms',
@@ -89,6 +91,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
             ],
+            'builtins': ['overextends.templatetags.overextends_tags'],
         },
     },
 ]
@@ -145,7 +148,7 @@ COMPRESS_ROOT = os.path.join(BASE_DIR, 'tote/static')
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "tote"
+WAGTAIL_SITE_NAME = "Tote"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
