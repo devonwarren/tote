@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Months(models.Model):
-    """These are the month that can be selected from other models and given themes"""
+    """These are the months that can be selected from other models and given themes"""
     MONTHS = (
         (1, 'January'),
         (2, 'Febuary'),

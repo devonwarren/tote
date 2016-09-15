@@ -9,6 +9,29 @@ from wagtail.wagtailsearch import index
 from months.models import Months
 
 
+class Contributor(models.Model):
+    """People contributing to the content"""
+    first_name = models.CharField(max_length=120)
+    last_name = models.CharField(max_length=120)
+    image = models.ForeignKey(
+        'wagtailimages.Image',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='+'
+    )
+
+    # Panel configuration
+    content_panels = Page.content_panels + [
+        FieldPanel('first_name'),
+        FieldPanel('last_name'),
+        ImageChooserPanel('image'),
+    ]
+
+    def __str__(self):
+        return self.first_name + ' ' + self.last_name
+
+
 class Article(Page):
     """Configurations for the various article pages"""
 
@@ -16,7 +39,7 @@ class Article(Page):
     body = RichTextField()
     date = models.DateField("Post date")
     theme = models.ForeignKey(
-        Months,
+        'months.Months',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
@@ -30,14 +53,14 @@ class Article(Page):
         related_name='+'
     )
     text_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'Contributor',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
         related_name='text_by'
     )
     art_by = models.ForeignKey(
-        settings.AUTH_USER_MODEL,
+        'Contributor',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
