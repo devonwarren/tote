@@ -52,6 +52,12 @@
             <li><a href="/month/now/">This Month</a></li>
             <li><a href="/month/all/">All Months</a></li>
             <li><a href="/about/">About</a></li>
+            <li>
+              <form action="{% url 'search' %}" method="get">
+                <input type="text" name="query" value="{{ search_query }}">
+                <input type="submit" value="Search">
+              </form>
+            </li>
           </ul>
         </nav>
 
