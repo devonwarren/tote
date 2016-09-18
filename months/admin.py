@@ -1,5 +1,5 @@
 from django.contrib import admin
-from months.models import Months
+from months.models import Month
 
 
-admin.register(Months)
+admin.register(Month)

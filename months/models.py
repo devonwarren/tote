@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Months(models.Model):
+class Month(models.Model):
     """These are the months that can be selected from other models and given themes"""
     MONTHS = (
         (1, 'January'),
@@ -19,8 +19,8 @@ class Months(models.Model):
     )
 
     theme = models.CharField(max_length=60, help_text="Month theme label")
-    month = models.CharField(max_length=3, choices=MONTHS)
+    month = models.IntegerField(choices=MONTHS)
     year = models.IntegerField()
 
     def __str__(self):
-        return str(self.month + ' ' + self.theme)
+        return self.MONTHS[self.month][1] + ' ' + self.theme

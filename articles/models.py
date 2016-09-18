@@ -6,7 +6,7 @@ from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-from months.models import Months
+from months.models import Month
 
 
 class Contributor(models.Model):
@@ -39,7 +39,7 @@ class Article(Page):
     body = RichTextField()
     date = models.DateField("Post date")
     theme = models.ForeignKey(
-        'months.Months',
+        'months.Month',
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
