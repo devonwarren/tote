@@ -9,23 +9,15 @@ from wagtail.wagtailsearch import index
 from months.models import Month
 
 
-class Contributor(models.Model):
+class Contributor(index.Indexed, models.Model):
     """People contributing to the content"""
     first_name = models.CharField(max_length=120)
     last_name = models.CharField(max_length=120)
-    image = models.ForeignKey(
-        'wagtailimages.Image',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
-        related_name='+'
-    )
 
-    # Panel configuration
-    content_panels = Page.content_panels + [
-        FieldPanel('first_name'),
-        FieldPanel('last_name'),
-        ImageChooserPanel('image'),
+    # Search indexing
+    search_fields = [
+        index.SearchField('first_name'),
+        index.SearchField('last_name'),
     ]
 
     def __str__(self):
@@ -66,6 +58,7 @@ class Article(Page):
         on_delete=models.SET_NULL,
         related_name='art_by'
     )
+
     # Search indexing
     search_fields = Page.search_fields + [
         index.SearchField('body'),

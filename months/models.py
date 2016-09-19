@@ -1,7 +1,8 @@
 from django.db import models
+from wagtail.wagtailsearch import index
 
 
-class Month(models.Model):
+class Month(index.Indexed, models.Model):
     """These are the months that can be selected from other models and given themes"""
     MONTHS = (
         (1, 'January'),
@@ -21,6 +22,15 @@ class Month(models.Model):
     theme = models.CharField(max_length=60, help_text="Month theme label")
     month = models.IntegerField(choices=MONTHS)
     year = models.IntegerField()
+
+    # Search indexing
+    search_fields = [
+        index.SearchField('theme', partial_match=True, boost=10),
+        index.FilterField('year'),
+    ]
+
+    class Meta:
+        unique_together = (('month', 'year'),)
 
     def __str__(self):
         return self.MONTHS[self.month][1] + ' ' + self.theme

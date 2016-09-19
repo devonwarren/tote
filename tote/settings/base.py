@@ -37,6 +37,8 @@ INSTALLED_APPS = [
     'compressor',
     'overextends',
     'wagtail.contrib.modeladmin',
+    'debug_toolbar',
+
 
     # Wagtail
     'wagtail.wagtailforms',
@@ -71,6 +73,8 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
@@ -156,6 +160,8 @@ WAGTAIL_SITE_NAME = "Tote"
 BASE_URL = 'https://www.totemag.com'
 
 ALLOWED_HOSTS = ['totemag.com', 'www.totemag.com']
+
+INTERNAL_IPS = ['127.0.0.1',]
 
 # Other settings
 

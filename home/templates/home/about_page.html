@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+
+{% block content %}
+
+<p>{{ body }}</p>
+
+{% for person in team_members %}
+  {{ person.contributor }}
+{% endfor %}
+
+{% endblock %}
