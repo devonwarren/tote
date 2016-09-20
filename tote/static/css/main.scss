@@ -4,12 +4,14 @@ $font-color: #2B2B2B;
 $title-color: #242424;
 $accent-color-1: #FFD7CB;
 $accent-color-2: #CDEBED;
+$heading-font: 'Arial', sans-serif;
+$body-font: 'Times New Roman', serif;
 
 
 // Basic Elements
 
 body {
-  font-family: 'Times New Roman', serif;
+  font-family: $body-font;
   font-size: 1rem;
   background-color: #FFF;
   color: $font-color;
@@ -20,7 +22,7 @@ img {
 }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Arial', sans-serif;
+  font-family: $heading-font;
   color: $title-color;
   margin: 1rem 0;
   padding: 0;
@@ -92,10 +94,26 @@ nav {
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
+    flex-wrap: wrap;
 
-    a {
+    img {
+      width: 2rem;
+    }
+    a:link {
       padding: 1rem;
       color: $font-color;
+      font-size: .9rem;
+      font-family: $heading-font;
+      text-transform: uppercase;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    input {
+      width: 10rem;
+      border: none;
+      padding: .2rem;
+      font-size: .9rem;
+      color: #666;
     }
   }
 }
