@@ -1,5 +1,6 @@
 from django.db import models
 from django.conf import settings
+from django.template.defaultfilters import slugify
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField
@@ -9,7 +10,7 @@ from wagtail.wagtailsearch import index
 from months.models import Month
 
 
-class Contributor(index.Indexed, models.Model):
+class Contributor(models.Model, index.Indexed):
     """People contributing to the content"""
     first_name = models.CharField(max_length=120)
     last_name = models.CharField(max_length=120)
@@ -22,6 +23,9 @@ class Contributor(index.Indexed, models.Model):
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
+
+    def get_absolute_url(self):
+        return '/author/' + slugify(self.first_name + ' ' + self.last_name) + '/'
 
 
 class Article(Page):

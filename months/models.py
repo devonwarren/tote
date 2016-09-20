@@ -1,4 +1,5 @@
 from django.db import models
+from django.template.defaultfilters import slugify
 from wagtail.wagtailsearch import index
 
 
@@ -30,7 +31,10 @@ class Month(index.Indexed, models.Model):
     ]
 
     class Meta:
-        unique_together = (('month', 'year'),)
+        unique_together = (('month', 'year'), )
 
     def __str__(self):
-        return self.MONTHS[self.month][1] + ' ' + self.theme
+        return self.MONTHS[self.month][1] + ' ' + str(self.year) + ' ' + self.theme
+
+    def get_absolute_url(self):
+        return '/month/' + slugify(self.theme)

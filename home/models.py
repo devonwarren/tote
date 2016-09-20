@@ -26,6 +26,7 @@ class AboutPage(Page):
         context['team_members'] = self.about_team_members.all
         return context
 
+
 class AboutPageTeamLink(Orderable):
     page = ParentalKey(AboutPage, related_name='about_team_members')
     contributor = models.ForeignKey(Contributor)

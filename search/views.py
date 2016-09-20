@@ -1,10 +1,15 @@
 from __future__ import absolute_import, unicode_literals
+from datetime import date
+from itertools import chain
 
 from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.shortcuts import render
+from django.db.models import Q
 
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailsearch.models import Query
+from months.models import Month
+from articles.models import Contributor
 
 
 def search(request):
@@ -13,7 +18,14 @@ def search(request):
 
     # Search
     if search_query:
-        search_results = Page.objects.live().search(search_query)
+        # Combine all the model types
+        pages = Page.objects.live().search(search_query)
+        contributors = Contributor.objects.filter(Q(first_name__icontains=search_query) | Q(last_name__icontains=search_query))
+        months = Month.objects.filter(
+            Q(theme__icontains=search_query, year__lt=date.today().year) |
+            Q(theme__icontains=search_query, year=date.today().year, month__lte=date.today().month))
+
+        search_results = list(chain(pages, contributors, months))
         query = Query.get(search_query)
 
         # Record hit
