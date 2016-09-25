@@ -3,9 +3,27 @@
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
-    <h1>Welcome to your new Wagtail site!</h1>
 
-    <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "./manage.py createsuperuser" in the console first).
+<div id="instagram-recent">
 
-    <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
+  {% load instagram_client %}
+
+  {% instagram_user_recent_media tote_mag %}
+
+  <h3 class="center"><a href="https://www.instagram.com/tote_mag/">@tote_mag</a></h3>
+
+  <h4 class="center">STAY RAD WITH US // INSTAGRAM</h4>
+
+  <div class="image-list">
+    {% for media in recent_media|slice:":4" %}
+      <div>
+        <a href="{{ media.display_src }}" target="_blank" title="{{ media.caption }}">
+          <img src="{{ media.thumbnail_src|thumbnail }}"/>
+        </a>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+
 {% endblock %}

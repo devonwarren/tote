@@ -23,10 +23,14 @@ img {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $heading-font;
-  color: $title-color;
   margin: 1rem 0;
   padding: 0;
   font-size: 1.2rem;
+
+  &, & a {
+    color: $title-color !important;
+    text-decoration: none !important;
+  }
 }
 
 h1 {
@@ -38,12 +42,21 @@ h2 {
 }
 
 h3 {
-  font-size: 1.6rem;
+  font-size: 1.7rem;
+}
+
+h4 {
+  font-size: 1.1rem;
+  color: #666 !important;
 }
 
 a:link, a:visited, a:hover, a:active {
   color: #0070FF;
   text-decoration: underline;
+}
+
+.center {
+  text-align: center;
 }
 
 
@@ -117,4 +130,16 @@ nav {
       text-align: center;
     }
   }
+}
+
+// Specific elements
+
+#instagram-recent .image-list {
+  text-align: center;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }

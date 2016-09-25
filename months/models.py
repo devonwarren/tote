@@ -4,7 +4,9 @@ from wagtail.wagtailsearch import index
 
 
 class Month(index.Indexed, models.Model):
-    """These are the months that can be selected from other models and given themes"""
+    """
+    These are the months that can be selected from other models and given theme
+    """
     MONTHS = (
         (1, 'January'),
         (2, 'Febuary'),
@@ -34,7 +36,8 @@ class Month(index.Indexed, models.Model):
         unique_together = (('month', 'year'), )
 
     def __str__(self):
-        return self.MONTHS[self.month][1] + ' ' + str(self.year) + ' ' + self.theme
+        return self.MONTHS[self.month][1] + ' ' + str(self.year) + \
+            ' ' + self.theme
 
     def get_absolute_url(self):
         return '/month/' + slugify(self.theme)

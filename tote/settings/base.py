@@ -35,10 +35,11 @@ INSTALLED_APPS = [
 
     # Contrib
     'compressor',
+    'django_instagram',
     'overextends',
     'wagtail.contrib.modeladmin',
     'debug_toolbar',
-
+    'sorl.thumbnail',
 
     # Wagtail
     'wagtail.wagtailforms',
