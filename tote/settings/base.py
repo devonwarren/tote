@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django_instagram',
     'overextends',
     'wagtail.contrib.modeladmin',
-    'debug_toolbar',
     'sorl.thumbnail',
 
     # Wagtail
@@ -74,9 +73,6 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
-
-    'debug_toolbar.middleware.DebugToolbarMiddleware',
-
     'wagtail.wagtailcore.middleware.SiteMiddleware',
     'wagtail.wagtailredirects.middleware.RedirectMiddleware',
 ]
@@ -156,13 +152,13 @@ COMPRESS_ROOT = os.path.join(BASE_DIR, 'tote/static')
 
 WAGTAIL_SITE_NAME = "Tote"
 
-# Base URL to use when referring to full URLs within the Wagtail admin backend -
+# Base URL to use when referring to full URLs within the Wagtail admin backend
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'https://www.totemag.com'
 
 ALLOWED_HOSTS = ['totemag.com', 'www.totemag.com']
 
-INTERNAL_IPS = ['127.0.0.1',]
+INTERNAL_IPS = ['127.0.0.1', ]
 
 # Other settings
 

@@ -21,6 +21,8 @@
           <img src="{{ media.thumbnail_src|thumbnail }}"/>
         </a>
       </div>
+    {% empty %}
+      Issue loading.. please try again later
     {% endfor %}
   </div>
 
