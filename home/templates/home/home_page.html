@@ -17,8 +17,9 @@
   <div class="image-list">
     {% for media in recent_media|slice:":4" %}
       <div>
-        <a href="{{ media.display_src }}" target="_blank" title="{{ media.caption }}">
+        <a title="{{ media.caption }}">
           <img src="{{ media.thumbnail_src|thumbnail }}"/>
+          <span>{{ media.caption }}</span>
         </a>
       </div>
     {% empty %}
