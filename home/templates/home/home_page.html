@@ -4,29 +4,65 @@
 
 {% block content %}
 
-<div id="instagram-recent">
+{% load wagtailimages_tags %}
 
-  {% load instagram_client %}
+{% if month %}
 
-  {% instagram_user_recent_media tote_mag %}
+<div id="homepage-featured">
 
-  <h3 class="center"><a href="https://www.instagram.com/tote_mag/">@tote_mag</a></h3>
-
-  <h4 class="center">STAY RAD WITH US // INSTAGRAM</h4>
-
-  <div class="image-list">
-    {% for media in recent_media|slice:":4" %}
-      <div>
-        <a title="{{ media.caption }}">
-          <img src="{{ media.thumbnail_src|thumbnail }}"/>
-          <span>{{ media.caption }}</span>
-        </a>
-      </div>
-    {% empty %}
-      Issue loading.. please try again later
-    {% endfor %}
+  {% if month.leader.title %}
+  {% with slide=month.leader %}
+  <div class="slide">
+    {% image slide.main_image fill-800x500 %}
+    <div>
+      <h3>{{ slide.title|lower }}</h3>
+      <span>LEADER OF THE MONTH // {{ slide.text_by|upper }}</span>
+    </div>
   </div>
+  {% endwith %}
+  {% endif %}
+
+  {% if month.feature_girl_1.title %}
+  {% with slide=month.feature_girl_1 %}
+  <div class="slide">
+    {% image slide.main_image fill-800x500 %}
+    <div>
+      <h3>{{ slide.title|lower }}</h3>
+      <span>FEATURE GIRL #1 // {{ slide.text_by|upper }}</span>
+    </div>
+  </div>
+  {% endwith %}
+  {% endif %}
+
+  {% if month.feature_girl_2.title %}
+  {% with slide=month.feature_girl_2 %}
+  <div class="slide">
+    {% image slide.main_image fill-800x500 %}
+    <div>
+      <h3>{{ slide.title|lower }}</h3>
+      <span>FEATURE GIRL #2 // {{ slide.text_by|upper }}</span>
+    </div>
+  </div>
+  {% endwith %}
+  {% endif %}
+
+  {% if month.music_spotlight.title %}
+  {% with slide=month.music_spotlight %}
+  <div class="slide">
+    {% image slide.main_image fill-800x500 %}
+    <div>
+      <h3>{{ slide.title|lower }}</h3>
+      <span>MUSIC SPOTLIGHT // {{ slide.text_by|upper }}</span>
+    </div>
+  </div>
+  {% endwith %}
+  {% endif %}
 
 </div>
+
+{% endif %}
+
+
+{% include "instagram.html" %}
 
 {% endblock %}

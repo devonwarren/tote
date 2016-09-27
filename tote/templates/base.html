@@ -17,6 +17,13 @@
         {% load compress %}
         {% compress css %}
           <link rel="stylesheet" type="text/x-scss" href="{% static "css/main.scss" %}">
+          <link rel="stylesheet" type="text/css" href="{% static "css/responsiveslides.css" %}">
+        {% endcompress %}
+
+        {% compress js %}
+          <script src="{% static "js/jquery.min.js" %}"></script>
+          <script src="{% static "js/responsiveslides.min.js" %}"></script>
+          <script src="{% static "js/tote.js" %}"></script>
         {% endcompress %}
 
         {% block extra_css %}

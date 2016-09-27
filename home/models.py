@@ -1,4 +1,5 @@
 from __future__ import absolute_import, unicode_literals
+from datetime import date
 from django.db import models
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailcore.models import Page, Orderable
@@ -6,10 +7,18 @@ from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from articles.models import Contributor
+from months.models import Month
 
 
 class HomePage(Page):
-    pass
+    this_month = Month.objects.get(
+        year=date.today().year,
+        month=date.today().month)
+
+    def get_context(self, request):
+        context = super(HomePage, self).get_context(request)
+        context['month'] = self.this_month
+        return context
 
 
 class AboutPage(Page):

@@ -146,6 +146,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 COMPRESS_ROOT = os.path.join(BASE_DIR, 'tote/static')
+COMPRESS_ENABLED = True
 
 
 # Wagtail settings

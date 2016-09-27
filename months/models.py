@@ -1,5 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
+from django.core.validators import MinValueValidator
 from wagtail.wagtailsearch import index
 
 
@@ -24,7 +25,41 @@ class Month(index.Indexed, models.Model):
 
     theme = models.CharField(max_length=60, help_text="Month theme label")
     month = models.IntegerField(choices=MONTHS)
-    year = models.IntegerField()
+    year = models.IntegerField(validators=[MinValueValidator(2010)])
+
+    leader = models.ForeignKey(
+        'articles.Article',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='leader',
+        help_text='Leader of the Month',
+        limit_choices_to={'live': True}
+    )
+    feature_girl_1 = models.ForeignKey(
+        'articles.Article',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='feature_girl_1',
+        help_text='Feature Girl #1'
+    )
+    feature_girl_2 = models.ForeignKey(
+        'articles.Article',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='feature_girl_2',
+        help_text='Feature Girl #2'
+    )
+    music_spotlight = models.ForeignKey(
+        'articles.Article',
+        null=True,
+        blank=True,
+        on_delete=models.SET_NULL,
+        related_name='music_spotlight',
+        help_text='Music Spotlight'
+    )
 
     # Search indexing
     search_fields = [

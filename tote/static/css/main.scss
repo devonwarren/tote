@@ -19,6 +19,7 @@ body {
 
 img {
   max-width: 100%;
+  height: auto;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -132,7 +133,39 @@ nav {
   }
 }
 
+main {
+  margin: 0 1rem;
+}
+
 // Specific elements
+
+#homepage-featured {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+
+  div.slide {
+    h3 {
+      color: #000 !important;
+      letter-spacing: .2em;
+    }
+    img {
+      position: relative;
+    }
+    div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(255,255,255,0.6);
+
+      span {
+        font-family: sans-serif;
+      }
+    }
+  }
+}
 
 #instagram-recent .image-list {
   text-align: center;
@@ -168,5 +201,30 @@ nav {
     &:hover span {
       opacity: 1;
     }
+  }
+}
+
+.rslides2_tabs {
+  display: none !important;
+}
+
+.rslides_tabs {
+  list-style: none;
+  margin: .6rem;
+  justify-content: center;
+  display: flex;
+
+  li a {
+    display: block;
+    width: 16px;
+    height: 0px;
+    padding-top: 16px;
+    background-image: url(../images/slideshow-pagination.png);
+    background-position: 0 0;
+    float: left;
+    overflow: hidden;
+  }
+  li.rslides_here a {
+    background-position: 0 -16px;
   }
 }

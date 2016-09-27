@@ -1,13 +1,10 @@
 from django.db import models
-from django.conf import settings
 from django.template.defaultfilters import slugify
-from modelcluster.fields import ParentalKey
-from wagtail.wagtailcore.models import Page, Orderable
+from wagtail.wagtailcore.models import Page
 from wagtail.wagtailcore.fields import RichTextField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel, InlinePanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
-from months.models import Month
 
 
 class Contributor(models.Model, index.Indexed):
@@ -25,7 +22,8 @@ class Contributor(models.Model, index.Indexed):
         return self.first_name + ' ' + self.last_name
 
     def get_absolute_url(self):
-        return '/author/' + slugify(self.first_name + ' ' + self.last_name) + '/'
+        return '/author/' + \
+            slugify(self.first_name + ' ' + self.last_name) + '/'
 
 
 class Article(Page):
@@ -39,7 +37,7 @@ class Article(Page):
         null=True,
         blank=True,
         on_delete=models.SET_NULL,
-        related_name='article_theme'
+        related_name='article_theme',
     )
     main_image = models.ForeignKey(
         'wagtailimages.Image',
@@ -50,9 +48,6 @@ class Article(Page):
     )
     text_by = models.ForeignKey(
         'Contributor',
-        null=True,
-        blank=True,
-        on_delete=models.SET_NULL,
         related_name='text_by'
     )
     art_by = models.ForeignKey(
