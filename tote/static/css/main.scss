@@ -103,7 +103,8 @@ nav {
 
   ul {
     list-style: none;
-
+    margin: 0 auto;
+    max-width: 800px;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -139,8 +140,9 @@ main {
 
 .section-header {
   font-size: 1.4rem;
-  margin: 2rem 0;
+  margin: 2rem auto;
   width: 100%;
+  max-width: 800px;
   border-bottom: solid 1px #CCC;
   font-family: $heading-font;
 
