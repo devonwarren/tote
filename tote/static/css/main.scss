@@ -4,8 +4,10 @@ $font-color: #2B2B2B;
 $title-color: #242424;
 $accent-color-1: #FFD7CB;
 $accent-color-2: #CDEBED;
+$border-color: #CCC;
 $heading-font: 'Arial', sans-serif;
 $body-font: 'Times New Roman', serif;
+$max-width: 800px;
 
 
 // Basic Elements
@@ -49,6 +51,10 @@ h3 {
 h4 {
   font-size: 1.1rem;
   color: #666 !important;
+}
+
+em {
+  font-style: italic;
 }
 
 a:link, a:visited, a:hover, a:active {
@@ -104,7 +110,7 @@ nav {
   ul {
     list-style: none;
     margin: 0 auto;
-    max-width: 800px;
+    max-width: $max-width;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -142,14 +148,30 @@ main {
   font-size: 1.4rem;
   margin: 2rem auto;
   width: 100%;
-  max-width: 800px;
-  border-bottom: solid 1px #CCC;
+  max-width: $max-width;
+  border-bottom: solid 1px $border-color;
   font-family: $heading-font;
 
   span {
     display: inline-block;
-    background-color: #CCC;
+    background-color: $border-color;
     padding: .8rem 2.2rem;
+  }
+}
+
+.divider {
+  background-color: $accent-color-2;
+  margin: 2rem 0;
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 24px;
+    padding: 1rem;
   }
 }
 
@@ -179,6 +201,42 @@ main {
       span {
         font-family: $heading-font;
       }
+    }
+  }
+}
+
+#homepage-section1 {
+  max-width: $max-width;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+
+  .sidebar {
+    .sidebar-title {
+      font-size: 1.4rem;
+      margin: 0 0 1rem;
+      display: flex;
+      align-items: center;
+
+      .bubble-icon {
+        margin-right: 1rem;
+        width: 26px;
+      }
+    }
+    #month-teaser {
+      width: 100%;
+      border: solid 1px $accent-color-2;
+      padding: .6rem;
+    }
+    h3 {
+      margin: 2.2rem 0 .4rem;
+      font-size: 1.4rem !important;
+    }
+    input {
+      margin: .4rem 0;
+      padding: .2rem;
     }
   }
 }
@@ -243,4 +301,14 @@ main {
   li.rslides_here a {
     background-position: 0 -16px;
   }
+}
+
+// Responsive design non-mobile stylesheets
+
+@media (min-width: 900px) {
+  @import "css/tablet.scss";
+}
+
+@media (min-width: 1200px) {
+  @import "css/desktop.scss";
 }

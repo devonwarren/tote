@@ -6,17 +6,21 @@ from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
-from articles.models import Contributor
+from articles.models import Article, Contributor
 from months.models import Month
 
 
 class HomePage(Page):
-    this_month = Month.objects.get(
-        year=date.today().year,
-        month=date.today().month)
+    try:
+        this_month = Month.objects.get(
+            year=date.today().year,
+            month=date.today().month)
+    except Exception:
+        this_month = False
 
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
+        context['articles'] = Article.objects.filter(theme=self.this_month).order_by('-date')
         context['month'] = self.this_month
         return context
 

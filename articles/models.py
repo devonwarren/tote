@@ -1,6 +1,6 @@
 from django.db import models
 from django.template.defaultfilters import slugify
-from wagtail.wagtailcore.models import Page
+from wagtail.wagtailcore.models import Page, PageManager
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
@@ -48,7 +48,10 @@ class Article(Page):
     )
     text_by = models.ForeignKey(
         'Contributor',
-        related_name='text_by'
+        null=False,
+        blank=False,
+        related_name='text_by',
+        on_delete=models.PROTECT,
     )
     art_by = models.ForeignKey(
         'Contributor',
@@ -79,3 +82,5 @@ class Article(Page):
         ),
         FieldPanel('body', classname="full"),
     ]
+
+    objects = PageManager()

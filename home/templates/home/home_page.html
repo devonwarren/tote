@@ -5,6 +5,7 @@
 {% block content %}
 
 {% load wagtailimages_tags %}
+{% load staticfiles %}
 
 {% if month %}
 
@@ -64,8 +65,52 @@
   <span>{{ month.theme|lower }} // {{ month.string_date|lower }}</span>
 </div>
 
+{% else %}
+  <h3>Error finding this months content, please come back later</h3>
 {% endif %}
 
-{% include "instagram.html" %}
+<div id="homepage-section1">
+
+  <div class="article-list">
+    TODO
+  </div>
+  <div class="sidebar">
+    <div class="sidebar-title">
+      <img src="{% static "images/icons/bubble.svg" %}" class="bubble-icon"> #totetalks
+    </div>
+
+    <div id="month-teaser">
+      TODO
+    </div>
+
+    <h3>// about us //</h3>
+    <p>
+      tote mag produces online monthly issues featuring content
+      that celebrates a sisterhood of game changers for daily content
+      keep up with us on social media
+    </p>
+
+    <h3>don't miss an issue</h3>
+    <em>subscribe to our newsletter</em><br>
+    <form>
+      <input type="email" name="email" placeholder="EMAIL">
+    </form>
+
+  </div>
+
+</div>
+
+{% for article in articles %}
+  <h3>{{ article.title }}</h3>
+{% endfor %}
+
+<div class="divider">
+  <img src="{% static "images/icons/sparkle.svg" %}">
+  <img src="{% static "images/icons/moon.svg" %}">
+  <img src="{% static "images/icons/peace.svg" %}">
+  let's get together: submit your stuff!
+</div>
+
+{# include "instagram.html" #}
 
 {% endblock %}
