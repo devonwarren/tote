@@ -72,7 +72,12 @@
 <div id="homepage-section1">
 
   <div class="article-list">
-    TODO
+    {% for article in articles|slice:":3" %}
+      <article>
+        {% image article.main_image fill-250x250 %}<br>
+        <h4>{{ article.title|lower }}</h4>
+      </article>
+    {% endfor %}
   </div>
   <div class="sidebar">
     <div class="sidebar-title">
@@ -100,10 +105,6 @@
 
 </div>
 
-{% for article in articles %}
-  <h3>{{ article.title }}</h3>
-{% endfor %}
-
 <div class="divider">
   <img src="{% static "images/icons/sparkle.svg" %}">
   <img src="{% static "images/icons/moon.svg" %}">
@@ -111,6 +112,6 @@
   let's get together: submit your stuff!
 </div>
 
-{# include "instagram.html" #}
+{% include "instagram.html" %}
 
 {% endblock %}

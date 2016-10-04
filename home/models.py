@@ -20,7 +20,8 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
-        context['articles'] = Article.objects.filter(theme=self.this_month).order_by('-date')
+        context['articles'] = Article.objects.filter(theme=self.this_month). \
+            order_by('-date')
         context['month'] = self.this_month
         return context
 

@@ -1,0 +1,13 @@
+#homepage-section1 {
+  .article-list {
+    article {
+      &:nth-child(3) {
+        margin: 0 2rem;
+
+        &::before {
+          background-color: green;
+        }
+      }
+    }
+  }
+}

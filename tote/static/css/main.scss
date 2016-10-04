@@ -213,6 +213,19 @@ main {
   flex-direction: row;
   justify-content: flex-start;
 
+  .article-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    article {
+      margin: 1rem;
+
+      h4 {
+        font-weight: bold;
+        color: $title-color;
+      }
+  }
   .sidebar {
     .sidebar-title {
       font-size: 1.4rem;
