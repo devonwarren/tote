@@ -112,6 +112,29 @@
   let's get together: submit your stuff!
 </div>
 
-{% include "instagram.html" %}
+
+<div id="homepage-section2">
+
+  <div class="article-list">
+    {% for article in articles|slice:"3:7" %}
+      <article>
+        {% image article.main_image fill-250x250 %}<br>
+        <h4>{{ article.title|lower }}</h4>
+      </article>
+    {% endfor %}
+  </div>
+  <div class="sidebar">
+    {% if prev_month %}
+
+      {{ prev_month.theme }}
+
+    {% endif %}
+
+  </div>
+
+</div>
+
+
+{# include "instagram.html" #}
 
 {% endblock %}

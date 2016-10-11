@@ -71,11 +71,11 @@ class Month(index.Indexed, models.Model):
         unique_together = (('month', 'year'), )
 
     def __str__(self):
-        return self.MONTHS[self.month + 1][1] + ' ' + str(self.year) + \
+        return self.MONTHS[self.month - 1][1] + ' ' + str(self.year) + \
             ' ' + self.theme
 
     def string_date(self):
-        return self.MONTHS[self.month + 1][1] + ' ' + str(self.year)
+        return self.MONTHS[self.month - 1][1] + ' ' + str(self.year)
 
     def get_absolute_url(self):
         return '/month/' + slugify(self.theme)

@@ -205,7 +205,8 @@ main {
   }
 }
 
-#homepage-section1 {
+#homepage-section1,
+#homepage-section2 {
   max-width: $max-width;
   margin: 0 auto;
   display: flex;
@@ -225,6 +226,7 @@ main {
         font-weight: bold;
         color: $title-color;
       }
+    }
   }
   .sidebar {
     .sidebar-title {
@@ -250,6 +252,7 @@ main {
     input {
       margin: .4rem 0;
       padding: .2rem;
+      border: solid 1px $border-color;
     }
   }
 }
@@ -319,9 +322,9 @@ main {
 // Responsive design non-mobile stylesheets
 
 @media (min-width: 900px) {
-  @import "css/tablet.scss";
+  @import "_tablet.scss";
 }
 
 @media (min-width: 1200px) {
-  @import "css/desktop.scss";
+  @import "_desktop.scss";
 }

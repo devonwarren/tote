@@ -1,6 +1,8 @@
 from __future__ import absolute_import, unicode_literals
-from datetime import date
+from datetime import date, datetime
+from dateutil.relativedelta import relativedelta
 from django.db import models
+from django.core.exceptions import ObjectDoesNotExist
 from modelcluster.fields import ParentalKey
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField
@@ -15,14 +17,24 @@ class HomePage(Page):
         this_month = Month.objects.get(
             year=date.today().year,
             month=date.today().month)
-    except Exception:
+    except ObjectDoesNotExist:
         this_month = False
+
+    try:
+        prev = date.today() - relativedelta(months=1)
+        prev_month = Month.objects.get(
+            year=prev.year,
+            month=prev.month)
+    except ObjectDoesNotExist:
+        prev_month = False
+
 
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
         context['articles'] = Article.objects.filter(theme=self.this_month). \
             order_by('-date')
         context['month'] = self.this_month
+        context['prev_month'] = self.prev_month
         return context
 
 
