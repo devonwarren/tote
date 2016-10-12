@@ -1,10 +1,11 @@
-#homepage-section1 {
+#homepage-section1,
+#homepage-section2 {
   .article-list {
     width: 600px;
   }
   .sidebar {
     width: 200px;
-    padding: 10px;
+    padding: 14px;
     box-sizing: border-box;
     border-left: solid 1px $border-color;
   }

@@ -53,6 +53,10 @@ h4 {
   color: #666 !important;
 }
 
+h5 {
+  font-size: .92rem;
+}
+
 em {
   font-style: italic;
 }
@@ -218,17 +222,23 @@ main {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-content: flex-start;
 
     article {
       margin: 1rem;
+      width: 260px;
 
       h4 {
         font-weight: bold;
         color: $title-color;
+        margin: .5rem 0;
+        letter-spacing: .1rem;
       }
     }
   }
   .sidebar {
+    margin: 0 auto;
+
     .sidebar-title {
       font-size: 1.4rem;
       margin: 0 0 1rem;
@@ -257,39 +267,46 @@ main {
   }
 }
 
-#instagram-recent .image-list {
-  text-align: center;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  align-content: center;
-  justify-content: center;
-  flex-wrap: wrap;
+#instagram-recent {
+  border-top: solid 1px $border-color;
+  border-bottom: solid 1px $border-color;
+  margin: 2rem 0;
+  padding: 1rem 0 2rem;
 
-  div {
-    width: 200px;
-    height: 200px;
-    position: relative;
+  .image-list {
+    text-align: center;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-wrap: wrap;
 
-    span {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(255,215,203,0.8);
-      color: #000;
-      line-height: 1.4rem;
-      opacity: 0;
-      transition: opacity 500ms;
-      display: flex;
-      justify-content: center;
-      padding: 1rem;
-      box-sizing: border-box;
-      align-items: center;
-    }
-    &:hover span {
-      opacity: 1;
+    div {
+      width: 200px;
+      height: 200px;
+      position: relative;
+
+      span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(255,215,203,0.8);
+        color: #000;
+        line-height: 1.4rem;
+        opacity: 0;
+        transition: opacity 500ms;
+        display: flex;
+        justify-content: center;
+        padding: 1rem;
+        box-sizing: border-box;
+        align-items: center;
+      }
+      &:hover span {
+        opacity: 1;
+      }
     }
   }
 }

@@ -1,3 +1,6 @@
+{% load cache %}
+{% cache 500 instagram %}
+
 <div id="instagram-recent">
 
   {% load instagram_client %}
@@ -22,3 +25,5 @@
   </div>
 
 </div>
+
+{% endcache %}

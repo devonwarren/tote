@@ -11,53 +11,15 @@
 
 <div id="homepage-featured">
 
-  {% if month.leader.title %}
-  {% with slide=month.leader %}
+  {% for slide in month.featured_articles %}
   <div class="slide">
-    {% image slide.main_image fill-800x500 %}
+    {% image slide.1.main_image fill-800x500 %}
     <div>
-      <h3>{{ slide.title|lower }}</h3>
-      <span>LEADER OF THE MONTH // {{ slide.text_by|upper }}</span>
+      <h3>{{ slide.1.title|lower }}</h3>
+      <span>{{ slide.0 }} // {{ slide.1.text_by|upper }}</span>
     </div>
   </div>
-  {% endwith %}
-  {% endif %}
-
-  {% if month.feature_girl_1.title %}
-  {% with slide=month.feature_girl_1 %}
-  <div class="slide">
-    {% image slide.main_image fill-800x500 %}
-    <div>
-      <h3>{{ slide.title|lower }}</h3>
-      <span>FEATURE GIRL #1 // {{ slide.text_by|upper }}</span>
-    </div>
-  </div>
-  {% endwith %}
-  {% endif %}
-
-  {% if month.feature_girl_2.title %}
-  {% with slide=month.feature_girl_2 %}
-  <div class="slide">
-    {% image slide.main_image fill-800x500 %}
-    <div>
-      <h3>{{ slide.title|lower }}</h3>
-      <span>FEATURE GIRL #2 // {{ slide.text_by|upper }}</span>
-    </div>
-  </div>
-  {% endwith %}
-  {% endif %}
-
-  {% if month.music_spotlight.title %}
-  {% with slide=month.music_spotlight %}
-  <div class="slide">
-    {% image slide.main_image fill-800x500 %}
-    <div>
-      <h3>{{ slide.title|lower }}</h3>
-      <span>MUSIC SPOTLIGHT // {{ slide.text_by|upper }}</span>
-    </div>
-  </div>
-  {% endwith %}
-  {% endif %}
+  {% endfor %}
 
 </div>
 
@@ -74,8 +36,9 @@
   <div class="article-list">
     {% for article in articles|slice:":3" %}
       <article>
-        {% image article.main_image fill-250x250 %}<br>
+        {% image article.main_image fill-260x260 %}<br>
         <h4>{{ article.title|lower }}</h4>
+        <h5>FEATURE // {{ article.text_by|upper }}</h5>
       </article>
     {% endfor %}
   </div>
@@ -118,15 +81,25 @@
   <div class="article-list">
     {% for article in articles|slice:"3:7" %}
       <article>
-        {% image article.main_image fill-250x250 %}<br>
+        {% image article.main_image fill-260x260 %}<br>
         <h4>{{ article.title|lower }}</h4>
+        <h5>FEATURE // {{ article.text_by|upper }}</h5>
       </article>
     {% endfor %}
   </div>
   <div class="sidebar">
     {% if prev_month %}
 
-      {{ prev_month.theme }}
+      <div class="sidebar-title">// previous posts //</div>
+
+      {% for article in prev_month.featured_articles %}
+      {% with article=article.1 %}
+        <article>
+          {% image article.main_image fill-260x200 %}<br>
+          <h4>{{ article.title|lower }}</h4>
+        </article>
+      {% endwith %}
+      {% endfor %}
 
     {% endif %}
 
@@ -135,6 +108,7 @@
 </div>
 
 
-{# include "instagram.html" #}
+{% include "instagram.html" %}
+
 
 {% endblock %}

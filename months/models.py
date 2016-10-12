@@ -77,5 +77,17 @@ class Month(index.Indexed, models.Model):
     def string_date(self):
         return self.MONTHS[self.month - 1][1] + ' ' + str(self.year)
 
+    def featured_articles(self):
+        articles = []
+        if self.leader:
+            articles.append(('LEADER OF THE MONTH', self.leader))
+        if self.feature_girl_1:
+            articles.append(('FEATURE GIRL #1', self.feature_girl_1))
+        if self.feature_girl_2:
+            articles.append(('FEATURE GIRL #2', self.feature_girl_2))
+        if self.music_spotlight:
+            articles.append(('MUSIC SPOTLIGHT', self.music_spotlight))
+        return articles
+
     def get_absolute_url(self):
         return '/month/' + slugify(self.theme)
