@@ -2,8 +2,8 @@
 
 $font-color: #2B2B2B;
 $title-color: #242424;
-$accent-color-1: #FFD7CB;
-$accent-color-2: #CDEBED;
+$accent-color-1: #CDEBED;
+$accent-color-2: #FFD7CB;
 $border-color: #CCC;
 $heading-font: 'Arial', sans-serif;
 $body-font: 'Times New Roman', serif;
@@ -103,7 +103,7 @@ header {
   }
 }
 
-nav {
+nav, footer {
   width: 100%;
   text-align: center;
   border-top: solid 1px $font-color;
@@ -148,6 +148,12 @@ main {
   margin: 0 1rem;
 }
 
+footer {
+  padding: 2rem 0 1rem;
+  border-top: solid 1px $border-color;
+  border-bottom: none;
+}
+
 .section-header {
   font-size: 1.4rem;
   margin: 2rem auto;
@@ -164,7 +170,6 @@ main {
 }
 
 .divider {
-  background-color: $accent-color-2;
   margin: 2rem 0;
   padding: 2rem;
   box-sizing: border-box;
@@ -173,6 +178,12 @@ main {
   align-items: center;
   justify-content: center;
 
+  &.alt-color-1 {
+    background-color: $accent-color-1;
+  }
+  &.alt-color-2 {
+    background-color: $accent-color-2;
+  }
   img {
     width: 24px;
     padding: 1rem;
@@ -308,6 +319,15 @@ main {
         opacity: 1;
       }
     }
+  }
+}
+
+#social-bar {
+  text-align: center;
+  margin: 3rem 0;
+
+  img {
+    width: 24px;
   }
 }
 
