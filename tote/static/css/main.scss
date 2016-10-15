@@ -67,6 +67,11 @@ a:link, a:visited, a:hover, a:active {
   text-decoration: underline;
 }
 
+input {
+  border: solid $border-width $border-color;
+  padding: .4rem;
+}
+
 .center {
   text-align: center;
 }

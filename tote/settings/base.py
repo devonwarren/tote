@@ -37,8 +37,9 @@ INSTALLED_APPS = [
     'compressor',
     'django_instagram',
     'overextends',
-    'wagtail.contrib.modeladmin',
+    'rest_framework',
     'sorl.thumbnail',
+    'wagtail.contrib.modeladmin',
 
     # Wagtail
     'wagtail.wagtailforms',
@@ -166,3 +167,9 @@ INTERNAL_IPS = ['127.0.0.1', ]
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )
+
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}

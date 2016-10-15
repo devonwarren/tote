@@ -8,6 +8,12 @@ from search import views as search_views
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
+from months.views import MonthViewSet
+from rest_framework import routers
+
+router = routers.DefaultRouter()
+router.register(r'month', MonthViewSet)
+
 
 urlpatterns = [
     url(r'^django-admin/', include(admin.site.urls)),
@@ -16,6 +22,9 @@ urlpatterns = [
     url(r'^documents/', include(wagtaildocs_urls)),
 
     url(r'^search/$', search_views.search, name='search'),
+
+    url(r'^api/', include(router.urls)),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 
     url(r'', include(wagtail_urls)),
 ]
