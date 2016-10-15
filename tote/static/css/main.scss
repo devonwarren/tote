@@ -13,6 +13,10 @@ $max-width: 800px;
 
 // Basic Elements
 
+* {
+  box-sizing: border-box;
+}
+
 body {
   font-family: $body-font;
   font-size: 1rem;
@@ -160,7 +164,7 @@ nav, footer {
 }
 
 main {
-  margin: 0 1rem;
+  margin: 0 10px;
 }
 
 footer {
@@ -190,7 +194,6 @@ footer {
 .divider {
   margin: 2rem 0;
   padding: 2rem;
-  box-sizing: border-box;
   width: 100%;
   display: flex;
   align-items: center;
@@ -204,7 +207,7 @@ footer {
   }
   img {
     width: 24px;
-    padding: 1rem;
+    margin: 1rem;
   }
 }
 
@@ -237,6 +240,38 @@ footer {
 }
 
 // Specific elements
+
+sidebar {
+  margin: 0 auto;
+
+  .sidebar-title {
+    font-size: 1.4rem;
+    margin: 0 0 1rem;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    .bubble-icon {
+      margin-right: 1rem;
+      width: 26px;
+    }
+  }
+  #month-teaser {
+    width: 100%;
+    border: solid $border-width $accent-color-2;
+    padding: .6rem;
+  }
+  h3 {
+    margin: 2.2rem 0 .4rem;
+    font-size: 1.4rem !important;
+  }
+  input {
+    margin: .4rem 0;
+    padding: .2rem;
+    width: 100%;
+    border: solid $border-width $border-color;
+  }
+}
 
 #homepage-featured {
   display: flex;
@@ -293,35 +328,6 @@ footer {
       }
     }
   }
-  .sidebar {
-    margin: 0 auto;
-
-    .sidebar-title {
-      font-size: 1.4rem;
-      margin: 0 0 1rem;
-      display: flex;
-      align-items: center;
-
-      .bubble-icon {
-        margin-right: 1rem;
-        width: 26px;
-      }
-    }
-    #month-teaser {
-      width: 100%;
-      border: solid $border-width $accent-color-2;
-      padding: .6rem;
-    }
-    h3 {
-      margin: 2.2rem 0 .4rem;
-      font-size: 1.4rem !important;
-    }
-    input {
-      margin: .4rem 0;
-      padding: .2rem;
-      border: solid $border-width $border-color;
-    }
-  }
 }
 
 #instagram-recent {
@@ -356,7 +362,6 @@ footer {
         display: flex;
         justify-content: center;
         padding: 1rem;
-        box-sizing: border-box;
         align-items: center;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -440,7 +445,7 @@ body.about {
 
 // Responsive design non-mobile stylesheets
 
-@media (min-width: 800px) {
+@media (min-width: 820px) {
   @import "_tablet.scss";
 }
 
