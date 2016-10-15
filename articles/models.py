@@ -65,6 +65,14 @@ class Article(Page):
     search_fields = Page.search_fields + [
         index.SearchField('body'),
         index.FilterField('date'),
+        index.RelatedFields('text_by', [
+            index.SearchField('first_name'),
+            index.SearchField('last_name'),
+        ]),
+        index.RelatedFields('art_by', [
+            index.SearchField('first_name'),
+            index.SearchField('last_name'),
+        ]),
     ]
 
     # Panel configuration
@@ -84,3 +92,9 @@ class Article(Page):
     ]
 
     objects = PageManager()
+
+    parent_page_types = ['home.ArticleIndexPage', ]
+    subpage_types = []
+
+    def get_absolute_url(self):
+        return self.url

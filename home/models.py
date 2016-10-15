@@ -29,6 +29,8 @@ class HomePage(Page):
     except ObjectDoesNotExist:
         prev_month = False
 
+    parent_page_types = []
+
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
         context['articles'] = Article.objects.filter(theme=self.this_month). \
@@ -36,6 +38,11 @@ class HomePage(Page):
         context['month'] = self.this_month
         context['prev_month'] = self.prev_month
         return context
+
+
+class ArticleIndexPage(Page):
+    parent_page_types = ['HomePage', ]
+    subpage_types = ['articles.Article', ]
 
 
 class AboutPage(Page):
@@ -62,6 +69,10 @@ class AboutPage(Page):
         ),
         InlinePanel('about_team_members', label="Team Members"),
     ]
+
+    parent_page_types = ['HomePage', ]
+
+    subpage_types = []
 
     def get_context(self, request):
         context = super(AboutPage, self).get_context(request)
