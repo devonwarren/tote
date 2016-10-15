@@ -23,8 +23,10 @@
 
 </div>
 
-<div class="section-header">
-  <span>{{ month.theme|lower }} // {{ month.string_date|lower }}</span>
+<div class="section-header-wrapper">
+  <div class="section-header">
+    <span>{{ month.theme|lower }} // {{ month.string_date|lower }}</span>
+  </div>
 </div>
 
 {% else %}
@@ -107,9 +109,11 @@
 
 </div>
 
+<hr>
 
 {% include "instagram.html" %}
 
+<hr>
 
 <div class="divider alt-color-2">
   <img src="{% static "images/icons/sparkle.svg" %}">

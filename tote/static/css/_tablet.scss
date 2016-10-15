@@ -1,13 +1,36 @@
-#homepage-section1 {
-  .article-list {
-    article {
-      &:nth-child(3) {
-        margin: 0 2rem;
+header .social-icons {
+  margin: 2rem;
+  text-align: left;
+}
 
-        &::before {
-          background-color: green;
-        }
-      }
+#homepage-featured {
+  div.slide {
+    text-align: left;
+
+    div {
+      padding: 2rem;
+      width: 350px;
+      height: 120px;
+      background-color: rgba(255, 255, 255, 0.8);
     }
+  }
+}
+
+#about-feature {
+  height: 650px;
+
+  div.inline-position {
+    position: relative;
+    width: 100%;
+  }
+  img {
+    position: absolute;
+  }
+  div.info-box {
+    position: absolute;
+    right: 0;
+    top: 50px;
+    height: 500px;
+    width: 350px;
   }
 }

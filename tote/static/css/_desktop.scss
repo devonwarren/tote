@@ -7,6 +7,6 @@
     width: 200px;
     padding: 14px;
     box-sizing: border-box;
-    border-left: solid 1px $border-color;
+    border-left: solid $border-width $border-color;
   }
 }

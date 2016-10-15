@@ -1,12 +1,65 @@
 {% extends "base.html" %}
 {% load wagtailcore_tags %}
+{% load wagtailimages_tags %}
+
+{% block body_class %}about{% endblock %}
 
 {% block content %}
 
-<p>{{ body }}</p>
+<div class="wrapper">
 
-{% for person in team_members %}
-  {{ person.contributor }}
-{% endfor %}
+  <h3>WHO WE ARE...</h3>
+
+  <div class="content">
+    {{ page.body|safe }}
+  </div>
+
+</div>
+<div class="wrapper">
+
+  <div id="about-feature">
+    <div class="inline-position">
+      {% image page.feature_image fill-550x550 %}
+      <div class="info-box">
+        <h3>the tote girl...</h3>
+        {{ page.feature_text|safe }}
+      </div>
+    </div>
+  </div>
+
+  <div class="slogan">celebrating a sisterhood of game changers</div>
+
+</div>
+
+<hr>
+
+<div class="wrapper">
+
+  <section id="team-list">
+    <h3>meet the team</h3>
+
+    <ul>
+    {% for person in team_members %}
+      <li>
+        {% image person.image fill-250x250 %}
+        <h4>{{ person.contributor|upper }} //</h4>
+        <h5>{{ person.position|upper }}</h5>
+      </li>
+    {% endfor %}
+    </ul>
+  </section>
+
+  <div class="notice-box">
+    <h3>join us</h3>
+    wanna collab with us? we're always looking for writers, visual artists, and
+    brands to work with. shoot us an email: contribute(at) totemag.com
+  </div>
+
+</div>
+
+<hr>
+
+{% include "instagram.html" %}
+
 
 {% endblock %}

@@ -7,16 +7,16 @@
 
   {% instagram_user_recent_media tote_mag %}
 
-  <h3 class="center"><a href="https://www.instagram.com/tote_mag/">@tote_mag</a></h3>
+  <h2 class="center"><a href="https://www.instagram.com/tote_mag/">@tote_mag</a></h2>
 
   <h4 class="center">STAY RAD WITH US // INSTAGRAM</h4>
 
   <div class="image-list">
     {% for media in recent_media|slice:":4" %}
       <div>
-        <a title="{{ media.caption }}">
+        <a title="{{ media.caption|truncatechars:150 }}">
           <img src="{{ media.thumbnail_src|thumbnail }}"/>
-          <span>{{ media.caption }}</span>
+          <span>{{ media.caption|truncatechars:150 }}</span>
         </a>
       </div>
     {% empty %}
