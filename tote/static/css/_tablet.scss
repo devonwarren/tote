@@ -3,8 +3,15 @@ header .social-icons {
   text-align: left;
 }
 
+div.with-sidebar {
+
+  div.content {
+    width: 590px;
+  }
+}
+
 sidebar {
-  width: 200px;
+  width: 190px;
   padding: 14px;
   box-sizing: border-box;
   border-left: solid $border-width $border-color;

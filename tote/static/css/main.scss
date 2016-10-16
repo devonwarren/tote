@@ -153,7 +153,7 @@ nav, footer {
       text-decoration: none;
     }
     input {
-      width: 8rem;
+      width: 10rem;
       border: none;
       padding: .4rem;
       font-size: .9rem;
@@ -214,6 +214,25 @@ footer {
 .wrapper {
   max-width: $max-width;
   margin: 0 auto;
+
+  &.with-sidebar {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+}
+
+ul.search-results {
+  padding: 1rem 0;
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  flex-direction: row;
+
+  li {
+    padding-right: 15px;
+  }
 }
 
 .info-box, .notice-box {
