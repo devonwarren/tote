@@ -4,8 +4,7 @@
 
 {% block content %}
 
-{% load wagtailimages_tags %}
-{% load staticfiles %}
+{% load staticfiles wagtailimages_tags %}
 
 {% if month %}
 
@@ -30,7 +29,9 @@
 </div>
 
 {% else %}
-  <h3>Error finding this months content, please come back later</h3>
+  <div class="wrapper">
+    <h3>Error finding this months content, please come back later</h3>
+  </div>
 {% endif %}
 
 <div id="homepage-section1">

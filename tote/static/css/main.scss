@@ -426,6 +426,16 @@ sidebar {
   }
 }
 
+body.article-details {
+  h2 {
+    letter-spacing: .1rem;
+    color: $font-color !important;
+  }
+  div.first.wrapper {
+    padding-bottom: 1rem;
+  }
+}
+
 body.about {
   div.content {
     margin-bottom: 2rem;
@@ -460,6 +470,11 @@ body.about {
       padding: .5rem;
     }
   }
+}
+
+// hack the wagtail icon
+.wagtail-icon-wagtail:before {
+  content: "d" !important;
 }
 
 // Responsive design non-mobile stylesheets

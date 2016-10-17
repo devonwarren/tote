@@ -1,14 +1,39 @@
 {% extends "base.html" %}
 
+{% block body_class %}article-details{% endblock %}
+
+{% block title %}{{ page.title }}{% endblock %}
+
 {% block content %}
 
-{% load wagtailcore_tags %}
-{% load wagtailimages_tags %}
+{% load wagtailcore_tags wagtailimages_tags %}
 
-<h1>{{ page.title }}</h1>
+{% with float=page.main_image_float %}
 
-{% image page.main_image fill-300x300-c100 %}
+<div class="first wrapper {% if float %}float-image{% endif %}">
 
-{{ page.body|richtext }}
+  <div class="content">
+    <h2>{{ page.title|lower }}</h2>
+    <h4>
+      TEXT: <a href="{{ page.text_by.get_absolute_url }}">{{ page.text_by|upper }}</a> //
+      {% if page.art_by %}ART: <a href="{{ page.art_by.get_absolute_url }}">{{ page.art_by|upper }}</a> // {% endif %}
+    </h4>
+
+    {% image page.main_image fill-800x500-c100 %}
+
+  </div>
+</div>
+<div class="wrapper with-sidebar">
+  <div class="content">
+
+    {{ page.body|richtext }}
+
+  </div>
+
+  {% include "sidebar.html" %}
+
+</div>
+
+{% endwith %}
 
 {% endblock %}

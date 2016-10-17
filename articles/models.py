@@ -46,6 +46,11 @@ class Article(Page):
         on_delete=models.SET_NULL,
         related_name='+'
     )
+    main_image_float = models.BooleanField(
+        default=False,
+        verbose_name='Float Image',
+        help_text="Select if the image should float vertically on the details page",
+    )
     text_by = models.ForeignKey(
         'Contributor',
         null=False,
@@ -79,7 +84,13 @@ class Article(Page):
     content_panels = Page.content_panels + [
         FieldPanel('date'),
         FieldPanel('theme'),
-        ImageChooserPanel('main_image'),
+        MultiFieldPanel(
+            [
+                ImageChooserPanel('main_image'),
+                FieldPanel('main_image_float'),
+            ],
+            heading="Image",
+        ),
         MultiFieldPanel(
             [
                 FieldPanel('text_by'),

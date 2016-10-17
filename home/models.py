@@ -40,6 +40,7 @@ class HomePage(Page):
         return context
 
 
+# placeholder page to be parent to all articles
 class ArticleIndexPage(Page):
     parent_page_types = ['HomePage', ]
     subpage_types = ['articles.Article', ]
