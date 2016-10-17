@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}author{% endblock %}
+
+{% block title %}{{ author }}{% endblock %}
+
+{% block content %}
+
+<div class="wrapper with-sidebar">
+
+    <div class="content">
+      <h1> contributor : {{ author|lower }}</h1>
+
+      {% if articles %}
+          <ul class="search-results">
+              {% for article in articles %}
+                  <li>
+                      <a href="{{ article.get_absolute_url }}">{% image article.main_image fill-180x120 %}</a>
+                      <h4><a href="{{ article.get_absolute_url }}">{{ article.title }}</a></h4>
+                  </li>
+              {% endfor %}
+          </ul>
+      {% else %}
+          <h4>No results found</h4>
+      {% endif %}
+    </div>
+
+    {% include "sidebar.html" %}
+</div>
+
+{% endblock %}

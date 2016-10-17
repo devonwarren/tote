@@ -1,16 +1,18 @@
 from django.db import models
-from django.template.defaultfilters import slugify
+from django.urls import reverse
 from wagtail.wagtailcore.models import Page, PageManager
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
+from autoslug import AutoSlugField
 
 
 class Contributor(models.Model, index.Indexed):
     """People contributing to the content"""
     first_name = models.CharField(max_length=120)
     last_name = models.CharField(max_length=120)
+    slug = AutoSlugField(populate_from='__str__')
 
     # Search indexing
     search_fields = [
@@ -22,8 +24,7 @@ class Contributor(models.Model, index.Indexed):
         return self.first_name + ' ' + self.last_name
 
     def get_absolute_url(self):
-        return '/author/' + \
-            slugify(self.first_name + ' ' + self.last_name) + '/'
+        return reverse('author', kwargs={'slug':self.slug})
 
 
 class Article(Page):

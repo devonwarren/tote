@@ -16,11 +16,11 @@ DATABASES = {
 }
 
 # use ElasticSearch (v1 only)
-WAGTAILSEARCH_BACKENDS = {
-    'default': {
-        'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
-        'URLS': ['http://localhost:9200'],
-        'INDEX': 'wagtail',
-        'TIMEOUT': 5,
-    }
-}
+# WAGTAILSEARCH_BACKENDS = {
+#     'default': {
+#         'BACKEND': 'wagtail.wagtailsearch.backends.elasticsearch',
+#         'URLS': ['http://localhost:9200'],
+#         'INDEX': 'wagtail',
+#         'TIMEOUT': 5,
+#     }
+# }
