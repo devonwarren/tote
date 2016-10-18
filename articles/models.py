@@ -1,5 +1,6 @@
 from django.db import models
 from django.urls import reverse
+from django.template.defaultfilters import slugify
 from wagtail.wagtailcore.models import Page, PageManager
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
@@ -20,11 +21,15 @@ class Contributor(models.Model, index.Indexed):
         index.SearchField('last_name'),
     ]
 
+    def save(self, *args, **kwargs):
+        if not len(self.slug.strip()):
+            self.slug = slugify(self.first_name + ' ' + self.last_name)
+
     def __str__(self):
         return self.first_name + ' ' + self.last_name
 
     def get_absolute_url(self):
-        return reverse('author', kwargs={'slug':self.slug})
+        return reverse('author', kwargs={'slug': self.slug})
 
 
 class Article(Page):
