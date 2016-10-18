@@ -1,5 +1,5 @@
 from django.db import models
-from django.template.defaultfilters import slugify
+from django.urls import reverse
 from django.core.validators import MinValueValidator
 from wagtail.wagtailsearch import index
 
@@ -90,4 +90,6 @@ class Month(index.Indexed, models.Model):
         return articles
 
     def get_absolute_url(self):
-        return '/month/' + slugify(self.theme)
+        return reverse('month', kwargs={
+            'year': self.year,
+            'month': self.month})

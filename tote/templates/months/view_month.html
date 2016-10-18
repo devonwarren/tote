@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static wagtailcore_tags wagtailimages_tags %}
+
+{% block body_class %}months{% endblock %}
+
+{% block title %}{{ month }}{% endblock %}
+
+{% block content %}
+
+<div class="wrapper with-sidebar">
+
+    <div class="content">
+      <ul class="search-results">
+        {% for article in articles %}
+            <li>
+                <a href="{{ article.get_absolute_url }}">{% image article.main_image fill-180x120 %}</a>
+                <h4><a href="{{ article.get_absolute_url }}">{{ article }}</a></h4>
+            </li>
+        {% endfor %}
+        </ul>
+    </div>
+
+    {% include "sidebar.html" %}
+</div>
+
+{% endblock %}

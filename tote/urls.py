@@ -3,12 +3,12 @@ from __future__ import absolute_import, unicode_literals
 from django.conf import settings
 from django.conf.urls import include, url
 from django.contrib import admin
-
+from datetime import date
 from search import views as search_views
 from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
-from months.views import MonthViewSet
+from months.views import MonthViewSet, list_months, month_view
 from articles.views import author_view
 from rest_framework import routers
 
@@ -25,6 +25,13 @@ urlpatterns = [
     url(r'^search/$', search_views.search, name='search'),
 
     url(r'^author/(?P<slug>.+?)/$', author_view, name='author'),
+
+    url(r'^month/now/$', month_view, name='this_month', kwargs={
+        'year': date.today().year,
+        'month': date.today().month,
+    }),
+    url(r'^month/all/$', list_months, name='list_months'),
+    url(r'^month/(?P<year>[0-9]+)/(?P<month>[0-9]+)/$', month_view, name='month'),
 
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
