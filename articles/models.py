@@ -1,6 +1,5 @@
 from django.db import models
 from django.urls import reverse
-from django.template.defaultfilters import slugify
 from wagtail.wagtailcore.models import Page, PageManager
 from wagtail.wagtailcore.fields import RichTextField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, MultiFieldPanel
@@ -13,17 +12,13 @@ class Contributor(models.Model, index.Indexed):
     """People contributing to the content"""
     first_name = models.CharField(max_length=120)
     last_name = models.CharField(max_length=120)
-    slug = AutoSlugField(populate_from='__str__')
+    slug = AutoSlugField(populate_from='__str__', blank=True, null=True)
 
     # Search indexing
     search_fields = [
         index.SearchField('first_name'),
         index.SearchField('last_name'),
     ]
-
-    def save(self, *args, **kwargs):
-        if not len(self.slug.strip()):
-            self.slug = slugify(self.first_name + ' ' + self.last_name)
 
     def __str__(self):
         return self.first_name + ' ' + self.last_name
