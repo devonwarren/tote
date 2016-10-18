@@ -45,7 +45,7 @@
     {% for person in team_members %}
       <li>
         {% image person.image fill-250x250 %}
-        <h4>{{ person.contributor|upper }} //</h4>
+        <h4><a href="{{ person.contributor.get_absolute_url }}">{{ person.contributor|upper }}</a> //</h4>
         <h5>{{ person.position|upper }}</h5>
       </li>
     {% endfor %}

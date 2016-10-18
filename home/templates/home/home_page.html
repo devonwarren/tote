@@ -15,7 +15,7 @@
     {% image slide.1.main_image fill-800x500 %}
     <div>
       <h3>{{ slide.1.title|lower }}</h3>
-      <span>{{ slide.0 }} // {{ slide.1.text_by|upper }}</span>
+      <span>{{ slide.0 }} // <a href="{{ slide.1.text_by.get_absolute_url }}">{{ slide.1.text_by|upper }}</a></span>
     </div>
   </div>
   {% endfor %}
@@ -41,7 +41,7 @@
       <article>
         {% image article.main_image fill-260x260 %}<br>
         <h4>{{ article.title|lower }}</h4>
-        <h5>FEATURE // {{ article.text_by|upper }}</h5>
+        <h5>FEATURE // <a href="{{ article.text_by.get_absolute_url }}">{{ article.text_by|upper }}</a></h5>
       </article>
     {% endfor %}
   </div>
@@ -65,7 +65,7 @@
       <article>
         {% image article.main_image fill-260x260 %}<br>
         <h4>{{ article.title|lower }}</h4>
-        <h5>FEATURE // {{ article.text_by|upper }}</h5>
+        <h5>FEATURE // <a href="{{ article.text_by.get_absolute_url }}">{{ article.text_by|upper }}</a></h5>
       </article>
     {% endfor %}
   </div>
