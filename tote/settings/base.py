@@ -164,6 +164,12 @@ INTERNAL_IPS = ['127.0.0.1', ]
 
 # Other settings
 
+EMAIL_HOST = 'mail.totemag.com'
+
+EMAIL_PORT = 26
+
+EMAIL_HOST_USER = 'website@totemag.com'
+
 COMPRESS_PRECOMPILERS = (
     ('text/x-scss', 'django_libsass.SassCompiler'),
 )

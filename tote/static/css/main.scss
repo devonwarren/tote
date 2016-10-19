@@ -258,6 +258,14 @@ ul.search-results {
   border-color: #cfab9b;
 }
 
+div#messages {
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  margin-bottom: 2rem;
+  background-color: $accent-color-1;
+}
+
 // Specific elements
 
 sidebar {

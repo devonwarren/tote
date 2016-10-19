@@ -9,7 +9,7 @@ from wagtail.wagtailadmin import urls as wagtailadmin_urls
 from wagtail.wagtailcore import urls as wagtail_urls
 from wagtail.wagtaildocs import urls as wagtaildocs_urls
 from months.views import MonthViewSet, list_months, month_view
-from articles.views import author_view
+from articles.views import author_view, subscribe
 from rest_framework import routers
 
 router = routers.DefaultRouter()
@@ -33,6 +33,8 @@ urlpatterns = [
     url(r'^month/all/$', list_months, name='list_months'),
     url(r'^month/(?P<year>[0-9]+)/(?P<month>[0-9]+)/$', month_view, name='month'),
 
+    url(r'^subscribe/$', subscribe, name='subscribe'),
+    
     url(r'^api/', include(router.urls)),
     url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
 

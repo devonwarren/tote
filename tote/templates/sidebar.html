@@ -17,7 +17,8 @@
 
   <h3>don't miss an issue</h3>
   <em>subscribe to our newsletter</em><br>
-  <form>
+  <form action="/subscribe/" method="post">
+    {% csrf_token %}
     <input type="email" name="email" placeholder="EMAIL">
   </form>
 
