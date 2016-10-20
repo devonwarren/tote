@@ -4,9 +4,12 @@
     <img src="{% static "images/icons/bubble.svg" %}" class="bubble-icon"> #totetalks
   </div>
 
+  {% if this_month %}
   <div id="month-teaser">
-    TODO
+    <h3>{{ this_month.theme|lower }}</h3>
+    <div class="condense">{{ this_month.description|safe }}</div>
   </div>
+  {% endif %}
 
   <h3>// about us //</h3>
   <p>

@@ -2,6 +2,7 @@ from django.db import models
 from django.urls import reverse
 from django.core.validators import MinValueValidator
 from wagtail.wagtailsearch import index
+from wagtail.wagtailcore.fields import RichTextField
 
 
 class Month(index.Indexed, models.Model):
@@ -26,6 +27,9 @@ class Month(index.Indexed, models.Model):
     theme = models.CharField(max_length=60, help_text="Month theme label")
     month = models.IntegerField(choices=MONTHS)
     year = models.IntegerField(validators=[MinValueValidator(2010)])
+    description = RichTextField(
+        help_text="Text to display in sidebar theme box",
+        blank=True)
 
     leader = models.ForeignKey(
         'articles.Article',

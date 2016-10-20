@@ -266,6 +266,22 @@ div#messages {
   background-color: $accent-color-1;
 }
 
+div.condense {
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    line-height: 1.4rem;
+
+    li {
+      margin-left: 4px;
+
+      &::before {
+        content: ' • ';
+      }
+    }
+  }
+}
+
 // Specific elements
 
 sidebar {
@@ -287,6 +303,10 @@ sidebar {
     width: 100%;
     border: solid $border-width $accent-color-2;
     padding: .6rem;
+
+    h3 {
+      margin: 0 0 .6rem;
+    }
   }
   h3 {
     margin: 2.2rem 0 .4rem;

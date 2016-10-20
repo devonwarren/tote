@@ -14,29 +14,21 @@ from months.models import Month
 
 
 class HomePage(Page):
-    try:
-        this_month = Month.objects.get(
-            year=date.today().year,
-            month=date.today().month)
-    except ObjectDoesNotExist:
-        this_month = False
-
-    try:
-        prev = date.today() - relativedelta(months=1)
-        prev_month = Month.objects.get(
-            year=prev.year,
-            month=prev.month)
-    except ObjectDoesNotExist:
-        prev_month = False
-
     parent_page_types = []
 
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
-        context['articles'] = Article.objects.filter(theme=self.this_month). \
-            order_by('-date')
-        context['month'] = self.this_month
-        context['prev_month'] = self.prev_month
+
+        try:
+            prev = date.today() - relativedelta(months=1)
+            prev_month = Month.objects.get(
+                year=prev.year,
+                month=prev.month)
+        except ObjectDoesNotExist:
+            prev_month = False
+
+        context['articles'] = Article.objects.live().order_by('-date')
+        context['prev_month'] = prev_month
         return context
 
 
